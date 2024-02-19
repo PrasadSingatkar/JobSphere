@@ -13,7 +13,7 @@ const StartupImage = (props) => {
     const textFadeIn = useSpring({
         from: { opacity: 0 },
         to: { opacity: 1 },
-        delay: 2000,
+        delay: 1000,
         config: { duration: 1000 },
     });
 

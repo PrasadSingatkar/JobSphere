@@ -2,6 +2,7 @@
 import React from "react";
 import Footer from "../Footer/Footer";
 import "./LandingPage.css";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
   return (
@@ -64,7 +65,8 @@ function LandingPage() {
             your journey towards a fulfilling and successful career. The next
             chapter of your professional life begins here!
           </p>
-          <button className="cta-button">Join Now</button>
+          {/* <button className="cta-button">Join Now</button> */}
+          <Link to="/signup" className="cta-button">Join Now</Link>
         </div>
       </div>
       <Footer />

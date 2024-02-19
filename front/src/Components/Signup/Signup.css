@@ -2,13 +2,19 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 4rem;
-
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ background-color: rgb(228, 222, 222);
+  position: relative;
+  padding-top: 0cm;
+  padding-bottom: 2cm;
+
 }
 
-
+.cs {
+  background-image: url(C:\Users\Lenovo\Desktop\PROJECT\Project\front\public\images\Form.jpg);
+}
 
 .text-center {
   text-align: center;
@@ -16,6 +22,7 @@
 
 .mb-4 {
   margin-bottom: 1.5rem;
+  color: black;
 }
 
 .form-control {
@@ -60,3 +67,4 @@
   display: block;
   width: 100%;
 }
+
