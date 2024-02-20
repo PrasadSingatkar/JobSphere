@@ -46,3 +46,7 @@
   .card {
     flex: 1;
   }
+
+  .section{
+    padding: 2cm;
+  }

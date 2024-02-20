@@ -17,10 +17,6 @@ function SignInPage() {
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevent default form submission behavior
 
-        // const credentials = {
-        //     email,
-        //     password,
-        // };
         if(userType==='jobSeeker'){
             jobSeekerService.checkCredentials({email,password})
             .then((response)=>{
