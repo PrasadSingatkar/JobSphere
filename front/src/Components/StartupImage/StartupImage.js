@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import image from "../image/6.png";
+import image from "../../images/6.png";
 import './StartupImage.css';
 
 const StartupImage = (props) => {

@@ -39,3 +39,10 @@
     padding: 20px;
   }
   
+  .card-container {
+    display: flex;
+  }
+  
+  .card {
+    flex: 1;
+  }
