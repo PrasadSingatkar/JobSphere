@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
-
+import jobSeekerService from "../../services/jobSeeker.service";
 
 function Signup() {
   const [userType, setUserType] = useState("");
@@ -9,7 +9,7 @@ function Signup() {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    // Redirect based on selected user type
+    
     if (userType === "jobSeeker") {
       navigate("/dashboard"); // Replace with the actual path to your Job Seeker component
     } else if (userType === "jobProvider") {

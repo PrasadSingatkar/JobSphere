@@ -4,17 +4,21 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.custom_exception.ApiException;
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.AddressDao;
 import com.app.dao.JobSeekerDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.JobSeekerDTO;
+import com.app.dto.SigninRequest;
 import com.app.entities.Address;
 import com.app.entities.JobSeeker;
 
@@ -86,6 +90,12 @@ public class JobSeekerServiceImpl implements JobSeekerService{
 		imgHandlingService.uploadImage(jobSeekerEntity, image);
 		JobSeeker savedjobSeeker=jobSeekerDao.save(jobSeekerEntity);
 		return mapper.map(savedjobSeeker, JobSeekerDTO.class);
+	}
+
+	@Override
+	public JobSeekerDTO jobSeekerSignIn(@Valid SigninRequest req) {
+		JobSeeker jobSeeker=jobSeekerDao.findByEmailAndPassword(req.getEmail(), req.getPassword()).orElseThrow(()-> new ApiException("Invalid Credentials"));
+		return mapper.map(jobSeeker, JobSeekerDTO.class);
 	}
 
 }

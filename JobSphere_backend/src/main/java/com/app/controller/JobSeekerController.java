@@ -7,12 +7,15 @@ import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 import java.io.IOException;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.AddressDTO;
 import com.app.dto.JobSeekerDTO;
+import com.app.dto.SigninRequest;
 import com.app.service.AddressService;
 import com.app.service.ImageHandlingService;
 import com.app.service.JobSeekerService;
@@ -34,6 +38,7 @@ import com.app.service.JobSeekerService;
 @RestController
 @RequestMapping("/jobSeeker")
 @Validated
+@CrossOrigin(origins = "http://localhost:3000")
 public class JobSeekerController {
 
 	@Autowired
@@ -95,5 +100,12 @@ public class JobSeekerController {
 	public ResponseEntity<?> uploadJobSeekerAndImage(@RequestPart MultipartFile image,@RequestPart JobSeekerDTO dto) throws IOException{
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(jobSeekerService.addNewaddnewJobSeekerWithImage(dto, image));
+	}
+	
+	@GetMapping("/jobSeeker/signIn")
+	public ResponseEntity<?> jobSeekerSignIn(@RequestParam("email") @Email String email, @RequestParam("password") @Length(min = 3, max = 20) String password){
+	    // Create a SigninRequest object if necessary
+	    SigninRequest req = new SigninRequest(email, password);
+	    return ResponseEntity.ok(jobSeekerService.jobSeekerSignIn(req));
 	}
 }

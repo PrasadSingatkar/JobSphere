@@ -30,9 +30,9 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
               <Route path="/login" element={<SignInPage />} />
-              <Route path="/dashboard" element={<JobSeekerDashboard />} />
-              {/* Add more routes as needed */}
-              <Route path="/*" element={<Navigate to="/" />} />
+              <Route path="/jobSeekerdashboard" element={<JobSeekerDashboard />} />
+              {/* Add more routes as needed
+              <Route path="/*" element={<Navigate to="/" />} /> */}
             </Routes>
           </>
         )}
